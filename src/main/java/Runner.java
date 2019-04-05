@@ -5,7 +5,7 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans/beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 
         Person person = (Person) context.getBean("person");
         person.speak();
