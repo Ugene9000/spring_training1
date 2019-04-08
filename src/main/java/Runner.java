@@ -9,6 +9,7 @@ public class Runner {
 
         Person person = (Person) context.getBean("person");
         person.speak();
+
         System.out.println(person.toString());
 
         ((ClassPathXmlApplicationContext)context).close();

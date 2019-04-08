@@ -5,7 +5,13 @@
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id = "person" class="Person">
-        <constructor-arg name="id" value="1"></constructor-arg>
-        <constructor-arg name="name" value="Seriozha"></constructor-arg>
+        <property name="id" value="1"></property>
+        <property name="name" value="Seriozha"></property>
+        <property name="taxId" value="12"></property>
+        <property name="address" ref="address"></property>
+    </bean>
+    <bean id = "address" class="Address">
+        <constructor-arg name="street" value="Hell street"></constructor-arg>
+        <constructor-arg name="postcode" value="666"></constructor-arg>
     </bean>
 </beans>
