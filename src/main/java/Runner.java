@@ -1,18 +1,20 @@
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.context.support.GenericApplicationContext;
 
 public class Runner {
 
     public static void main(String[] args) {
 
-        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/java/beans/beans.xml");
+        GenericApplicationContext context = new GenericApplicationContext();
+        XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(context);
+        xmlReader.loadBeanDefinitions("beans.xml");
+        context.refresh();
 
-        Person person = (Person) context.getBean("person");
+        Person person = context.getBean("person", Person.class);
         person.speak();
 
         System.out.println(person.toString());
 
-        ((FileSystemXmlApplicationContext)context).close();
+        context.close();
     }
 }
